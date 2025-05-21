@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 INSTALL_LOCATION="$HOME/local/.bin/"
 VERSION="v0.11.1"
+
+
+echo "Installing required packages..."
+sudo apt update
+sudo apt install -y \
+  ninja-build \
+  cmake \
+  git \
+  build-essential \
+  gettext \
+  luajit
 
 tmp="$(mktemp -d)"
 trap "rm -rf $tmp" EXIT
